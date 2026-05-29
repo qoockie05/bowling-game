@@ -12,7 +12,11 @@ public class Game {
         int score = 0;
         int i = 0;
         for (int frame = 0; frame < 10; frame++) {
-            if (rolls[i] + rolls[i + 1] == 10) { //spare bonus
+            if (rolls[i] == 10) { // strike bonus
+                score += 10 + rolls[i + 1] + rolls[i + 2]; //dodaje 10 punktow i dwa rzuty dodatkowo jako bonus
+                i++; //przesuwam o jeden
+            }
+           else if (rolls[i] + rolls[i + 1] == 10) { //spare bonus
                 score += 10 + rolls[i + 2]; //dodaje  10 punktow i wartosc nastepnego rzutu
                 i += 2; //przesuwam o dwa
             } else {

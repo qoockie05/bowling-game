@@ -32,4 +32,16 @@ class BowlingGameTest {
         g.roll(7);
         g.roll(3);
     }
+    @Test
+    void strikeBonusFollowedByThreeAndFourShouldScore24() {
+        rollStrike();        // 10 - cała ramka jednym rzutem
+        g.roll(3);
+        g.roll(4);
+        for (int i = 0; i < 16; i++) g.roll(0);
+        assertEquals(24, g.score());
+    }
+
+    private void rollStrike() {
+        g.roll(10);
+    }
 }
