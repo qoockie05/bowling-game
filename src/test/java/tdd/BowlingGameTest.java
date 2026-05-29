@@ -8,7 +8,7 @@ class BowlingGameTest {
 
     private Game g;
     @BeforeEach
-    void setUp() {
+    void setupGame() {
        g = new Game();
     }
     @Test
@@ -24,24 +24,27 @@ class BowlingGameTest {
     @Test
     void oneSpareFollowedByThreeShouldScore16() {
         rollSpare();          //  rzut 1 i 2
-        g.roll(3);            // bonus spare rzut 3
-        for (int i = 0; i < 17; i++) g.roll(0); //reszta rzutow
+        g.roll(3);            // bonus spare rzut trzeci
+        rollMany(17,0); //reszta rzutow
         assertEquals(16, g.score());
+    }
+
+    @Test
+    void strikeBonusFollowedByThreeAndFourShouldScore24() {
+        rollStrike();        // 10 cała ramka jednym rzutem
+        g.roll(3);
+        g.roll(4);
+        rollMany(16,0);
+        assertEquals(24, g.score());
+    }
+    private void rollStrike() {
+        g.roll(10);
     }
     private void rollSpare() {
         g.roll(7);
         g.roll(3);
     }
-    @Test
-    void strikeBonusFollowedByThreeAndFourShouldScore24() {
-        rollStrike();        // 10 - cała ramka jednym rzutem
-        g.roll(3);
-        g.roll(4);
-        for (int i = 0; i < 16; i++) g.roll(0);
-        assertEquals(24, g.score());
-    }
-
-    private void rollStrike() {
-        g.roll(10);
+    private void rollMany(int frame, int value){
+        for (int i = 0; i < frame; i++) g.roll(value);
     }
 }
