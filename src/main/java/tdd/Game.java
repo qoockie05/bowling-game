@@ -10,8 +10,15 @@ public class Game {
     }
     public int score() {
         int score = 0;
-        for (int i = 0; i < 20; i++) {
-            score += rolls[i];
+        int i = 0;
+        for (int frame = 0; frame < 10; frame++) {
+            if (rolls[i] + rolls[i + 1] == 10) { //spare bonus
+                score += 10 + rolls[i + 2]; //dodaje  10 punktow i wartosc nastepnego rzutu
+                i += 2; //przesuwam o dwa
+            } else {
+                score += rolls[i] + rolls[i + 1]; //zwykly rzut
+                i += 2;
+            }
         }
         return score;
     }
