@@ -31,14 +31,14 @@ class BowlingGameTest {
 
     @Test
     void strikeBonusFollowedByThreeAndFourShouldScore24() {
-        rollStrike();        // 10 cała ramka jednym rzutem
+        rollStrike();        //10 cała ramka jednym rzutem
         g.roll(3);
         g.roll(4);
         rollMany(16,0);
         assertEquals(24, g.score());
     }
     @Test
-    void bestGameShouldScore300() {
+    void bestGameShouldScore300(){
         rollMany(12,10); //12 strike z rzedu
         assertEquals(300, g.score());
     }
