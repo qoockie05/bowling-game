@@ -31,7 +31,7 @@ class BowlingGameTest {
 
     @Test
     void strikeBonusFollowedByThreeAndFourShouldScore24() {
-        rollStrike();        // 10 cała ramka jednym rzutem
+        rollStrike();        //10 cała ramka jednym rzutem
         g.roll(3);
         g.roll(4);
         rollMany(16,0);
