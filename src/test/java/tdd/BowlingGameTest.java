@@ -38,7 +38,7 @@ class BowlingGameTest {
         assertEquals(24, g.score());
     }
     @Test
-    void bestGameShouldScore300() {
+    void bestGameShouldScore300(){
         rollMany(12,10); //12 strike z rzedu
         assertEquals(300, g.score());
     }
